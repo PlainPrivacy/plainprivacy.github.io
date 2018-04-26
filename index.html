@@ -19,7 +19,7 @@
   <ol>
     <li>
       <h4>
-        Employees, partners, or anyone other than me can view my personal data for any reason without explicit, time-restricted permission from me?
+        Employees, partners, or anyone form of computer process can view my unencrypted personal data without explicit, time-restricted permission from me?
       </h4>
       <label name="data">
         <input type="radio" name="personal-data" value="0" checked="checked"></input>
@@ -36,7 +36,7 @@
     </li>
     <li>
       <h4>
-        Is my activity and usage recorded or logged for advertising, analytics, or any other purpose?
+        My activity and usage history is recorded or logged for advertising, analytics, debugging or any other purpose?
       </h4>
       <label name="metrics">
         <input type="radio" name="metrics" value="0" checked="checked"></input>
@@ -53,7 +53,7 @@
     </li>
     <li>
       <h4>
-        Do you or your partners retain data, logs, or record of any kind concerning my activity 1 month after I request its deletion?
+        Any form of data, log, or record of my account is recoverable 30 days after I request its deletion?
       </h4>
       <label name="personal-data">
         <input type="radio" name="deletion" value="0" checked="checked"></input>
@@ -102,7 +102,7 @@
   </ul>
 
   <script>
-    VERSION = '0.0.1';
+    VERSION = '0.0.2';
 
     function calculateRating() {
       answers = document.getElementsByTagName('input');
