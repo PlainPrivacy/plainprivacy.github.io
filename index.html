@@ -2,12 +2,26 @@
   <head>
     <title>Plain Privacy</title>
     <style>
-       label {
-         display: block
-       }
+      body {
+        padding: 10px;
+        max-width: 600;
+        margin: 0 auto;
+        color: #333;
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+      }
+      label {
+        display: block
+      }
+      #rating-container {
+        background: #eee;
+        border: 1px solid #ccc;
+        text-align:center;
+        padding: 20px;
+        margiin: 20px;
+      }
 
-       .blink { animation: blink-animation 1s steps(5, start) infinite; }
-        @keyframes blink-animation { to { visibility: hidden; } }
+     .blink { animation: blink-animation 1s steps(5, start) infinite; }
+     @keyframes blink-animation { to { visibility: hidden; } }
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   </head>
@@ -20,7 +34,7 @@
   <ol>
     <li>
       <h4>
-        Employees, partners, or any type of automated computer process has the ability to access my unencrypted personal data without explicit, time-restricted permission from me?
+        Employees, partners, or anyone other than me can view my personal data for any reason without explicit, time-restricted permission from me?
       </h4>
       <label name="data">
         <input type="radio" name="personal-data" value="0" checked="checked"></input>
@@ -28,7 +42,7 @@
       </label>
       <label name="personal-data">
         <input type="radio" name="personal-data" value="1"></input>
-        SORTA &ndash; it's anonymized
+        SORTA &ndash; it’s anonymized
       </label>
       <label name="personal-data">
         <input type="radio" name="personal-data" value="2"></input>
@@ -37,7 +51,7 @@
     </li>
     <li>
       <h4>
-        My activity and usage history is recorded, logged, or acquired for advertising, analytics, debugging, or any other purpose?
+        Is my activity and usage recorded or logged for advertising, analytics, or any other purpose?
       </h4>
       <label name="metrics">
         <input type="radio" name="metrics" value="0" checked="checked"></input>
@@ -45,7 +59,7 @@
       </label>
       <label name="metrics">
         <input type="radio" name="metrics" value="1"></input>
-        SORTA &ndash; it's anonymized, self hosted, and never used for advertising in any way
+        SORTA &ndash; it's anonymized, self hosted, and never used for advertising in any form
       </label>
       <label name="metrics">
         <input type="radio" name="metrics" value="2"></input>
@@ -54,7 +68,7 @@
     </li>
     <li>
       <h4>
-        Some form of data, logs, or record of my account is recoverable by any person or automated process 30 days after I request its deletion?
+        Do you or your partners retain data, logs, or record of any kind concerning my activity 1 month after I request its deletion?
       </h4>
       <label name="personal-data">
         <input type="radio" name="deletion" value="0" checked="checked"></input>
@@ -70,12 +84,13 @@
       </label>
     </li>
   </ol>
-  <h1>
-    <span id="rating">?</span> &times; Shields
-  </h1>
-  <blink>
-  <h1 id="shields" class="blink">?</h1>
-</blink>
+
+  <div id="rating-container">
+    <h1>
+      <span id="rating">?</span> &times; Shields
+    </h1>
+    <h1 id="shields" class="blink">?</h1>
+  </div>
 
   <h4>Embed Your Rating</h4>
   <textarea id="embed">
@@ -97,13 +112,13 @@
   <ul>
     <li><a href="https://github.com/chap">@mgomes</a></li>
     <li><a href="https://github.com/chap">@chap</a></li>
-    <li><a href="https://github.com/matthewblack">@matthewblack</a></li>
+    <li><a href="https://github.com/matthewblack">@chap</a></li>
     <li><a href="https://github.com/zeke">@zeke</a></li>
     <li><a href="https://github.com/plainprivacy">join us</a></li>
   </ul>
 
   <script>
-    VERSION = '0.0.4';
+    VERSION = '0.0.1';
 
     function calculateRating() {
       answers = document.getElementsByTagName('input');
