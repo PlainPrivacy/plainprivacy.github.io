@@ -1,0 +1,147 @@
+<html>
+  <head>
+    <title>Plain Privacy</title>
+    <style>
+       label {
+         display: block
+       }
+
+       .blink { animation: blink-animation 1s steps(5, start) infinite; }
+        @keyframes blink-animation { to { visibility: hidden; } }
+    </style>
+  </head>
+<body>
+  <h1>Plain Privacy</h1>
+  <h2>A grassroots movement to bring "nutrition labels" to privacy</h2>
+  <h5> v<span id="version"></span></h5>
+
+  <h3>Rate your product or service</h3>
+  <ol>
+    <li>
+      <h4>
+        Employees, partners, or anyone other than me can view my personal data for any reason without explicit, time-restricted permission from me?
+      </h4>
+      <label name="data">
+        <input type="radio" name="personal-data" value="0" checked="checked"></input>
+        YES
+      </label>
+      <label name="personal-data">
+        <input type="radio" name="personal-data" value="1"></input>
+        SORTA &ndash; it’s anonymized
+      </label>
+      <label name="personal-data">
+        <input type="radio" name="personal-data" value="2"></input>
+        NO
+      </label>
+    </li>
+    <li>
+      <h4>
+        Is my activity and usage recorded or logged for advertising, analytics, or any other purpose?
+      </h4>
+      <label name="metrics">
+        <input type="radio" name="metrics" value="0" checked="checked"></input>
+        YES
+      </label>
+      <label name="metrics">
+        <input type="radio" name="metrics" value="1"></input>
+        SORTA &ndash; it's anonymized, self hosted, and never used for advertising in any form
+      </label>
+      <label name="metrics">
+        <input type="radio" name="metrics" value="2"></input>
+        NO
+      </label>
+    </li>
+    <li>
+      <h4>
+        Do you or your partners retain data, logs, or record of any kind concerning my activity 1 month after I request its deletion?
+      </h4>
+      <label name="personal-data">
+        <input type="radio" name="deletion" value="0" checked="checked"></input>
+        YES
+      </label>
+      <label name="personal-data">
+        <input type="radio" name="deletion" value="1"></input>
+        SORTA &ndash; unable to delete backups or partial data due to audit requirements or legal regulations
+      </label>
+      <label name="personal-data">
+        <input type="radio" name="deletion" value="2"></input>
+        NO
+      </label>
+    </li>
+  </ol>
+  <h1>
+    <span id="rating">?</span> &times; Shields
+  </h1>
+  <blink>
+  <h1 id="shields" class="blink">?</h1>
+</blink>
+
+  <h4>Embed Your Rating</h4>
+  <textarea id="embed">
+    This site got a 0 shield rating from plainprivacy.org
+  </textarea>
+
+  <h4>🔒 Verify Your Rating</h4>
+  <p>
+    Open an issue on <a href="https://github.com/plainprivacy/plainprivacy/issues">github.com/plainprivacy</a>
+  </p>
+
+  <h4>Contact</h4>
+  <ul>
+    <li><a href="https://twitter.com/plainprivacy">🐦 twitter</a></li>
+    <li><a href="https://github.com/plainprivacy">🐈 github</a></li>
+  </ul>
+
+  <h4>Contributers</h4>
+  <ul>
+    <li><a href="https://github.com/chap">@mgomes</a></li>
+    <li><a href="https://github.com/chap">@chap</a></li>
+    <li><a href="https://github.com/matthewblack">@chap</a></li>
+    <li><a href="https://github.com/zeke">@zeke</a></li>
+    <li><a href="https://github.com/plainprivacy">join us</a></li>
+  </ul>
+
+  <script>
+    VERSION = '0.0.1';
+
+    function calculateRating() {
+      answers = document.getElementsByTagName('input');
+      console.log(this.value);
+      var rating = 0;
+      for(var i = 0; i < answers.length; i++) {
+        var answer = answers[i]
+        val = answer.value;
+        if (answer.checked) {
+          rating = rating + parseInt(val);
+        }
+      }
+
+      // console.log("final rating="+rating);
+      document.getElementById("rating").textContent = rating;
+      if (rating > 0) {
+        var shields = "🛡️".repeat(rating);
+      } else {
+        var shields = "😞";
+      }
+
+      document.getElementById("shields").textContent = shields;
+      embedCode = shields +
+                  "This site got a " +
+                  rating + " × shield rating from plainprivacy.org " +
+                  "v" + VERSION;
+      document.getElementById("embed").value = embedCode;
+    }
+
+    answers = document.getElementsByTagName('input');
+    for(var i = 0; i < answers.length; i++) {
+      answers[i].onclick = function() {
+        calculateRating();
+      }
+    };
+
+    // onload
+    calculateRating();
+    document.getElementById("version").textContent = VERSION;
+  </script>
+</body>
+</html>
